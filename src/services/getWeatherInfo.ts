@@ -1,12 +1,13 @@
+import type { GeoPosition } from "@/model/GeoPosition";
 import type { InfoWeather } from "@/model/InfoWeather";
 import axios from "axios";
+import getLocation from "./getUserLocation";
 
-const latitude = -22.759784;
-const longitude = -43.45151;
-const apiKey = "2934dc967d9450db9475398a77ff6d3d";
+const apiKey = import.meta.env.VITE_API_KEY;
 
 const buscar = async (city?: string): Promise<InfoWeather> => {
   let result;
+  let { lat, lon }: GeoPosition = await getLocation();
 
   if (city) {
     result = await axios.get(
@@ -14,7 +15,7 @@ const buscar = async (city?: string): Promise<InfoWeather> => {
     );
   } else {
     result = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&lang=pt_br&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&lang=pt_br&units=metric`
     );
   }
 
