@@ -15,12 +15,21 @@ function App() {
   let [infoTemp, setInfoTemp] = useState<Temp | null>(null);
   let [cityName, setCityName] = useState<string>("Nova Iguaçu");
 
-  let searchInfo = async () => {
-    let response = await buscar();
+  let searchInfo = async (city?: string) => {
+    let response;
+    if (city) {
+      response = await buscar(city);
+    } else {
+      response = await buscar();
+    }
     setCurrentInfo(response);
     setWeather(response.weather);
     setInfoTemp(response.temp);
     setCityName(response.city);
+  };
+
+  let handleSearch = (city: string) => {
+    searchInfo(city);
   };
 
   useEffect(() => {
@@ -33,7 +42,7 @@ function App() {
         <div>Carregando dados...</div>
       ) : (
         <div className="h-full flex flex-col items-center justify-around gap-y-5 border-2">
-          <SearchComponent />
+          <SearchComponent getCity={handleSearch} />
           {!weather ? (
             <div>Carregando dados...</div>
           ) : (
