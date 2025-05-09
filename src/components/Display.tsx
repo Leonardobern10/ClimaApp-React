@@ -3,6 +3,7 @@ import { useEffect, useState, type ReactElement } from 'react';
 import { IoThunderstormOutline } from 'react-icons/io5';
 import { WiCloud, WiDaySunny, WiHail, WiRainMix } from 'react-icons/wi';
 import { FaRegSnowflake } from 'react-icons/fa';
+import { WiFog } from 'react-icons/wi';
 
 export default function Display(props: {
      local: string;
@@ -56,7 +57,7 @@ export default function Display(props: {
                     <div className="h-full flex flex-col items-center justify-between">
                          <div className="h-[70%] md:h-full">
                               {componentMap[props.conditionMain] || (
-                                   <div>Erro ao carregar ícone</div>
+                                   <WiFog className="icon-style" />
                               )}
                          </div>
                          <div className="description">
