@@ -7,9 +7,12 @@ import type { Temp } from "./model/Temp";
 import type { Weather } from "./model/Weather";
 import buscar from "./services/getWeatherInfo";
 import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 function App() {
-  const [currentInfo, setCurrentInfo] = useState<InfoWeather | null>(null);
+  const [currentInfo, setCurrentInfo] = useState<InfoWeather | void | null>(
+    null
+  );
 
   let [weather, setWeather] = useState<Weather | null>(null);
   let [infoTemp, setInfoTemp] = useState<Temp | null>(null);
@@ -23,9 +26,9 @@ function App() {
       response = await buscar();
     }
     setCurrentInfo(response);
-    setWeather(response.weather);
-    setInfoTemp(response.temp);
-    setCityName(response.city);
+    setWeather(response!.weather);
+    setInfoTemp(response!.temp);
+    setCityName(response!.city);
   };
 
   let handleSearch = (city: string) => {
@@ -67,6 +70,7 @@ function App() {
           )}
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 }
