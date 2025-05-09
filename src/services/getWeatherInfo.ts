@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
-const buscar = async (city?: string): Promise<InfoWeather> => {
+const fetchWeatherInfo = async (city?: string): Promise<InfoWeather> => {
   let result: AxiosResponse;
   let { lat, lon }: GeoPosition = await getLocation();
 
@@ -28,13 +28,12 @@ const buscar = async (city?: string): Promise<InfoWeather> => {
       city: response.name,
     };
   } catch (error: any) {
-    toast.error(
-      `Erro: ${
-        error.response?.data?.message === "city not found"
-          ? "Cidade não encontrada"
-          : "Erro desconhecido"
-      }`
-    );
+    if (error.response?.data?.message === "city not found") {
+      toast.error("Erro: Cidade não encontrada!");
+    } else {
+      toast.error("Erro: Erro de processamento. Tente novamente!");
+    }
+
     result = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&lang=pt_br&units=metric`
     );
@@ -47,4 +46,4 @@ const buscar = async (city?: string): Promise<InfoWeather> => {
   }
 };
 
-export default buscar;
+export default fetchWeatherInfo;
