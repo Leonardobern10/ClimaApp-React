@@ -89,11 +89,10 @@ Sinta-se à vontade para fazer contribuições! Se você tiver melhorias ou corr
   <a href="https://www.linkedin.com/in/leonardo-bernardo25/" target="_blank">
     <img src="public/linkedin-svgrepo-com.svg" alt="Meu LinkedIn" width="60" />
   </a>
-
   <a href="https://portfolio-leonardo25.vercel.app/" target="_blank">
     <img src="public/user.svg" alt="Meu portfólio" width="60" />
   </a>
-    <a href="leonardo.bernardo2658@gmail.com" target="_blank">
-    <img src="public/gmail-svgrepo-com.svg" alt="Meu portfólio" width="60" />
+  <a href="mailto:leonardo.bernardo2658@gmail.com">
+       <img src="public/gmail-svgrepo-com.svg" alt="Meu portfólio" width="60" />
   </a>
 </div>
