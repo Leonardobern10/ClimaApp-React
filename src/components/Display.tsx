@@ -11,8 +11,7 @@ export default function Display(props: {
   sensation: number;
   conditionMain: string;
 }): ReactElement {
-  const data: Date = new Date();
-  const [time, setTime] = useState<Date>(new Date());
+  const [data, setData] = useState<Date>(new Date());
   const componentMap: Record<string, ReactElement> = {
     Thunderstorm: <IoThunderstormOutline className="icon-style" />,
     Drizzle: <WiRainMix className="icon-style" />,
@@ -24,7 +23,7 @@ export default function Display(props: {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(new Date());
+      setData(new Date());
     }, 1000);
 
     return () => clearInterval(timer);
@@ -48,7 +47,7 @@ export default function Display(props: {
           <p className="description">
             {DiaSemana[data.getDay()]},{" "}
             <span className="font-bold text-xs md:text-xl">
-              {time.toLocaleTimeString("pt-BR")}
+              {data.toLocaleTimeString("pt-BR")}
             </span>
           </p>
         </div>
