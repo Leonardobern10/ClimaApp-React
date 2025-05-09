@@ -92,7 +92,7 @@ Sinta-se à vontade para fazer contribuições! Se você tiver melhorias ou corr
   <a href="https://portfolio-leonardo25.vercel.app/" target="_blank">
     <img src="public/user.svg" alt="Meu portfólio" width="60" />
   </a>
-  <a href="mailto:leonardo@example.com">
+  <a href="mailto:leonardo.bernardo2658@gmail.com">
        <img src="public/gmail-svgrepo-com.svg" alt="Meu portfólio" width="60" />
   </a>
 </div>
