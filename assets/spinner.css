@@ -1,0 +1,7 @@
+.container {
+  @apply flex justify-center items-center p-10 rounded-2xl h-screen w-screen;
+}
+
+.spinner {
+  @apply w-14 h-14 rounded-full border-t-4 border-cyan-400 will-change-transform;
+}

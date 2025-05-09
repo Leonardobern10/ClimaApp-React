@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @import "../assets/display.css";
 @import "../assets/infoTemp.css";
+@import "../assets/spinner.css";
 
 @theme {
   --font-inter: "Inter", sans-serif;

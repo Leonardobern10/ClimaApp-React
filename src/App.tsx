@@ -1,11 +1,12 @@
 import "./App.css";
 import Display from "./components/Display";
 import InfoTemp from "./components/InfoTemp";
+import LoadingSpinner from "./components/LoadingSpinner";
 import SearchComponent from "./components/SearchComponent";
 import type { InfoWeather } from "./model/InfoWeather";
 import type { Temp } from "./model/Temp";
 import type { Weather } from "./model/Weather";
-import buscar from "./services/getWeatherInfo";
+import fetchWeatherInfo from "./services/getWeatherInfo";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 
@@ -19,11 +20,11 @@ function App() {
   let [cityName, setCityName] = useState<string>("Nova Iguaçu");
 
   let searchInfo = async (city?: string) => {
-    let response;
+    let response: InfoWeather;
     if (city) {
-      response = await buscar(city);
+      response = await fetchWeatherInfo(city);
     } else {
-      response = await buscar();
+      response = await fetchWeatherInfo();
     }
     setCurrentInfo(response);
     setWeather(response!.weather);
@@ -42,12 +43,12 @@ function App() {
   return (
     <div className="h-screen bg-linear-to-t from-[#2AA2BE] to-[#005DC2] font-inter">
       {!currentInfo ? (
-        <div>Carregando dados...</div>
+        <LoadingSpinner />
       ) : (
         <div className="h-full flex flex-col items-center justify-around gap-y-5 border-2">
           <SearchComponent getCity={handleSearch} />
           {!weather ? (
-            <div>Carregando dados...</div>
+            <LoadingSpinner />
           ) : (
             <Display
               local={cityName}
@@ -59,7 +60,7 @@ function App() {
           )}
 
           {!infoTemp ? (
-            <div>Carregando dados...</div>
+            <LoadingSpinner />
           ) : (
             <InfoTemp
               min={infoTemp.temp_min}
