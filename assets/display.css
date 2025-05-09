@@ -1,15 +1,15 @@
 .container-display {
-  @apply w-full flex flex-row items-center justify-evenly leading-0 md:leading-3;
+     @apply w-full flex flex-row items-center justify-evenly leading-0 md:leading-3;
 }
 
 .description {
-  @apply h-[20%] font-light text-[10px] md:text-lg;
+     @apply h-[20%] font-light text-[10px] md:text-lg;
 }
 
 .highlight {
-  @apply font-bold;
+     @apply font-bold;
 }
 
 .icon-style {
-  @apply h-full w-full text-white/70;
+     @apply h-full w-full text-white/70;
 }

@@ -1,7 +1,7 @@
 .temp-info {
-  @apply font-extrabold md:text-xl;
+     @apply font-extrabold md:text-xl;
 }
 
 .container-temp-info {
-  @apply text-sm md:text-lg;
+     @apply text-sm md:text-lg;
 }
