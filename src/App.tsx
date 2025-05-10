@@ -5,7 +5,6 @@ import SearchComponent from './components/SearchComponent';
 import type { InfoWeather } from './model/InfoWeather';
 import type { Temp } from './model/Temp';
 import type { Weather } from './model/Weather';
-import getForecast from './services/getTest';
 import fetchWeatherInfo from './services/getWeatherInfo';
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -72,16 +71,6 @@ function App() {
                     </div>
                )}
                <ToastContainer />
-               <button
-                    className="w-20 h-5 border-2 absolute top-0 right-2 text-xs"
-                    onClick={() => getForecast()}>
-                    Buscar
-               </button>
-               <button
-                    className="w-20 h-5 border-2 absolute top-6 right-2 text-xs"
-                    onClick={() => fetchWeatherInfo()}>
-                    Buscar
-               </button>
           </div>
      );
 }
