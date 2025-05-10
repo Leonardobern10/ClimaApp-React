@@ -4,6 +4,7 @@ import { IoThunderstormOutline } from 'react-icons/io5';
 import { WiCloud, WiDaySunny, WiHail, WiRainMix } from 'react-icons/wi';
 import { FaRegSnowflake } from 'react-icons/fa';
 import { WiFog } from 'react-icons/wi';
+import liveClock from '../effects/liveClock';
 
 export default function Display(props: {
      local: string;
@@ -23,12 +24,10 @@ export default function Display(props: {
      };
 
      useEffect(() => {
-          const timer = setInterval(() => {
-               setData(new Date());
-          }, 1000);
-
+          const timer = liveClock(setData);
           return () => clearInterval(timer);
      }, []);
+
      return (
           <div className="flex flex-col items-center justify-around bg-[#D4ECF2]/50 w-[90%] md:w-[60%] h-50 md:h-70 rounded-xl text-white/70 shadow-2xl">
                <div className="container-display w-[90%] font-light">
