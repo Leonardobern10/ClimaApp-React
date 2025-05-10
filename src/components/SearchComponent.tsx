@@ -20,7 +20,7 @@ export default function SearchComponent(props: {
                          <IoSearchCircleOutline className="w-full h-full" />
                     </button>
                     <input
-                         className="border-b-1 border-white/20 w-5/7 placeholder-shown:text-neutral-200 focus:bg-cyan-700/20 focus:outline-0 "
+                         className="border-b-1 rounded-lg px-2 border-white/20 w-5/7 placeholder-shown:text-neutral-200 active:bg-cyan-700 focus:bg-cyan-700/20 focus:outline-0 "
                          type="text"
                          name="search"
                          placeholder="Pesquisar local..."
