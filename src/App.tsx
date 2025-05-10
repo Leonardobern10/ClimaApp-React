@@ -5,6 +5,7 @@ import SearchComponent from './components/SearchComponent';
 import type { InfoWeather } from './model/InfoWeather';
 import type { Temp } from './model/Temp';
 import type { Weather } from './model/Weather';
+import getForecast from './services/getTest';
 import fetchWeatherInfo from './services/getWeatherInfo';
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -40,11 +41,11 @@ function App() {
      }, []);
 
      return (
-          <div className="h-screen bg-linear-to-t from-[#2AA2BE] to-[#005DC2] font-inter">
+          <div className="h-screen bg-linear-to-t from-[#005DC2] to-[#2AA2BE] font-inter">
                {!currentInfo ? (
                     <LoadingSpinner />
                ) : (
-                    <div className="h-full flex flex-col items-center justify-around gap-y-5 border-2">
+                    <div className="h-full flex flex-col items-center justify-around border-2">
                          <SearchComponent getCity={handleSearch} />
                          {!weather ? (
                               <LoadingSpinner />
@@ -71,6 +72,16 @@ function App() {
                     </div>
                )}
                <ToastContainer />
+               <button
+                    className="w-20 h-5 border-2 absolute top-0 right-2 text-xs"
+                    onClick={() => getForecast()}>
+                    Buscar
+               </button>
+               <button
+                    className="w-20 h-5 border-2 absolute top-6 right-2 text-xs"
+                    onClick={() => fetchWeatherInfo()}>
+                    Buscar
+               </button>
           </div>
      );
 }

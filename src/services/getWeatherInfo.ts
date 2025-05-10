@@ -39,6 +39,7 @@ const fetchWeatherInfo = async (city?: string): Promise<InfoWeather> => {
           result = await axios.get(url);
 
           const response = result.data;
+          console.log(response);
           return {
                weather: response.weather[0],
                temp: response.main,

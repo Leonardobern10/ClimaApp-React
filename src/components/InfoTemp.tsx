@@ -41,7 +41,7 @@ export default function InfoTemp(props: {
      );
 
      return (
-          <div className="h-10 md:h-20 w-[90%] md:w-[60%] bg-cyan-500/50 flex flex-row items-center justify-evenly rounded-xl text-white">
+          <div className="h-10 md:h-20 w-[90%] md:w-[60%] bg-[#5593D6]/50 flex flex-row items-center justify-evenly rounded-xl text-white">
                <InfoDivAnimateTemp
                     isVisible={isVisible}
                     showTemp={showTemp}

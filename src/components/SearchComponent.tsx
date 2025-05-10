@@ -7,7 +7,7 @@ export default function SearchComponent(props: {
      let [citySearch, setCitySearch] = useState<string>('');
 
      return (
-          <div className="h-10 w-[90%] md:w-[60%] rounded-xl bg-[#D4ECF2]/50 justify-self-start">
+          <div className="h-9 md:h-10 w-[90%] md:w-[60%] rounded-xl bg-[#D4ECF2]/50">
                <form
                     onSubmit={(e) => {
                          e.preventDefault();

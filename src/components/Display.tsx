@@ -1,7 +1,7 @@
 import DiaSemana from '../../src/model/DiaSemana';
 import { useEffect, useState, type ReactElement } from 'react';
 import { IoThunderstormOutline } from 'react-icons/io5';
-import { WiCloud, WiDaySunny, WiHail, WiRainMix } from 'react-icons/wi';
+import { WiDaySunny, WiHail, WiRainMix, WiCloudy } from 'react-icons/wi';
 import { FaRegSnowflake } from 'react-icons/fa';
 import { WiFog } from 'react-icons/wi';
 import liveClock from '../effects/liveClock';
@@ -22,7 +22,7 @@ export default function Display(props: {
           Rain: <WiHail className="icon-style" />,
           Snow: <FaRegSnowflake className="icon-style" />,
           Clear: <WiDaySunny className="icon-style" />,
-          Clouds: <WiCloud className="icon-style" />
+          Clouds: <WiCloudy className="icon-style" />
      };
 
      useEffect(() => {
@@ -31,7 +31,7 @@ export default function Display(props: {
      }, []);
 
      return (
-          <div className="flex flex-col items-center justify-around bg-[#D4ECF2]/50 w-[90%] md:w-[60%] h-50 md:h-70 rounded-xl text-white/70 shadow-2xl">
+          <div className="flex flex-col items-center justify-evenly bg-[#D4ECF2]/50 w-[90%] md:w-[60%] h-50 md:h-70 rounded-xl text-white">
                <div className="container-display w-[90%] font-light">
                     <div>
                          {props.local ? (
@@ -50,9 +50,9 @@ export default function Display(props: {
                          />
                     </div>
                </div>
-               <div className="container-display h-[50%]">
+               <div className="flex flex-row justify-between items-center container-display h-[50%]">
                     <div className="h-full flex flex-col items-center justify-between">
-                         <div className="h-[70%] md:h-full">
+                         <div className="h-30 md:h-full">
                               {componentMap[props.conditionMain] || (
                                    <WiFog className="icon-style" />
                               )}
@@ -65,10 +65,10 @@ export default function Display(props: {
                               )}
                          </div>
                     </div>
-                    <div className="h-full flex flex-col items-center justify-between ">
-                         <div className="h-[60%] md:h-[60%] w-full p-2">
+                    <div className="h-full flex flex-col items-center justify-between">
+                         <div className="h-25 md:h-[60%] w-full pt-4">
                               {props.temp ? (
-                                   <p className="text-5xl md:text-7xl text-white/70">
+                                   <p className="text-5xl md:text-7xl text-white">
                                         {Number(props.temp).toFixed(1)}
                                         <span className="text-2xl">°c</span>
                                    </p>
@@ -78,7 +78,7 @@ export default function Display(props: {
                          </div>
                          <div className="description ">
                               <p className="text-center">
-                                   Sensação
+                                   sensação térmica
                                    {props.sensation ? (
                                         <span className="font-bold">
                                              {' '}

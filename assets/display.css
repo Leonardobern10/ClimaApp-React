@@ -11,5 +11,5 @@
 }
 
 .icon-style {
-     @apply h-full w-full text-white/70;
+     @apply h-full w-full text-white leading-0;
 }
