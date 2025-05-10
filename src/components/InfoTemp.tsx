@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useState, type ReactElement } from 'react';
 import startInfoTransitionInterval from '../effects/transitionInfo';
 import InfoComponent from './InfoComponent';
+import InfoDivAnimateTemp from './InfoDivTemp';
 
 export default function InfoTemp(props: {
      min: number;
@@ -13,22 +13,22 @@ export default function InfoTemp(props: {
      const [showTemp, setShowTemp] = useState(true);
 
      useEffect(() => {
-          const interval = startInfoTransitionInterval(
+          const interval: number = startInfoTransitionInterval(
                setIsVisible,
                setShowTemp
           );
           return () => clearInterval(interval);
      }, []);
 
-     const tempMin = (
+     const tempMin: ReactElement = (
           <InfoComponent currentInfo="min." value={props.min} unity="°C" />
      );
 
-     const tempMax = (
+     const tempMax: ReactElement = (
           <InfoComponent currentInfo="max." value={props.max} unity="°C" />
      );
 
-     const pressure = (
+     const pressure: ReactElement = (
           <InfoComponent
                currentInfo="pressão"
                value={props.pressure}
@@ -36,22 +36,24 @@ export default function InfoTemp(props: {
           />
      );
 
-     const humidity = (
+     const humidity: ReactElement = (
           <InfoComponent currentInfo="umidade" value={props.umid} unity="%" />
      );
 
      return (
           <div className="h-10 md:h-20 w-[90%] md:w-[60%] bg-cyan-500/50 flex flex-row items-center justify-evenly rounded-xl text-white">
-               <motion.div
-                    animate={{ opacity: isVisible ? 1 : 0 }}
-                    transition={{ duration: 1 }}>
-                    {showTemp ? tempMin : pressure}
-               </motion.div>
-               <motion.div
-                    animate={{ opacity: isVisible ? 1 : 0 }}
-                    transition={{ duration: 1 }}>
-                    {showTemp ? tempMax : humidity}
-               </motion.div>
+               <InfoDivAnimateTemp
+                    isVisible={isVisible}
+                    showTemp={showTemp}
+                    value1={tempMin}
+                    value2={pressure}
+               />
+               <InfoDivAnimateTemp
+                    isVisible={isVisible}
+                    showTemp={showTemp}
+                    value1={tempMax}
+                    value2={humidity}
+               />
           </div>
      );
 }
