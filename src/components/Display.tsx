@@ -5,6 +5,7 @@ import { WiCloud, WiDaySunny, WiHail, WiRainMix } from 'react-icons/wi';
 import { FaRegSnowflake } from 'react-icons/fa';
 import { WiFog } from 'react-icons/wi';
 import liveClock from '../effects/liveClock';
+import DisplayDateInfo from './DisplayDateInfo';
 
 export default function Display(props: {
      local: string;
@@ -33,23 +34,19 @@ export default function Display(props: {
                <div className="container-display w-[90%] font-light">
                     <div>
                          {props.local ? (
-                              <p className="description">
-                                   {props.local},{' '}
-                                   <span className="font-bold text-xs md:text-xl">
-                                        {data.toLocaleDateString()}
-                                   </span>
-                              </p>
+                              <DisplayDateInfo
+                                   data={props.local}
+                                   dateInfo={data.toLocaleDateString()}
+                              />
                          ) : (
                               'Carregando...'
                          )}
                     </div>
                     <div>
-                         <p className="description">
-                              {DiaSemana[data.getDay()]},{' '}
-                              <span className="font-bold text-xs md:text-xl">
-                                   {data.toLocaleTimeString('pt-BR')}
-                              </span>
-                         </p>
+                         <DisplayDateInfo
+                              data={DiaSemana[data.getDay()]}
+                              dateInfo={data.toLocaleTimeString('pt-BR')}
+                         />
                     </div>
                </div>
                <div className="container-display h-[50%]">
