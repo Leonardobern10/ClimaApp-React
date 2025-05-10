@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import startInfoTransitionInterval from '../effects/transitionInfo';
+import InfoComponent from './InfoComponent';
 
 export default function InfoTemp(props: {
      min: number;
@@ -11,42 +13,31 @@ export default function InfoTemp(props: {
      const [showTemp, setShowTemp] = useState(true);
 
      useEffect(() => {
-          const interval = setInterval(() => {
-               // Primeiro some
-               setIsVisible(false);
-
-               // Depois de 1s (duração da animação), troca o conteúdo e volta a aparecer
-               setTimeout(() => {
-                    setShowTemp((prev) => !prev);
-                    setIsVisible(true);
-               }, 1000);
-          }, 5000);
-
+          const interval = startInfoTransitionInterval(
+               setIsVisible,
+               setShowTemp
+          );
           return () => clearInterval(interval);
      }, []);
 
      const tempMin = (
-          <p className="container-temp-info">
-               min. <span className="temp-info">{props.min} °C</span>
-          </p>
+          <InfoComponent currentInfo="min." value={props.min} unity="°C" />
      );
 
      const tempMax = (
-          <p className="container-temp-info">
-               max. <span className="temp-info">{props.max} °C</span>
-          </p>
+          <InfoComponent currentInfo="max." value={props.max} unity="°C" />
      );
 
      const pressure = (
-          <p className="container-temp-info">
-               pressao <span className="temp-info">{props.pressure} hPa</span>
-          </p>
+          <InfoComponent
+               currentInfo="pressão"
+               value={props.pressure}
+               unity="hPa"
+          />
      );
 
      const humidity = (
-          <p className="container-temp-info">
-               umid. <span className="temp-info">{props.umid} %</span>
-          </p>
+          <InfoComponent currentInfo="umidade" value={props.umid} unity="%" />
      );
 
      return (
