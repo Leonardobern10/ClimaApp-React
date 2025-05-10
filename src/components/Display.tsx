@@ -15,6 +15,7 @@ export default function Display(props: {
      conditionMain: string;
 }): ReactElement {
      const [data, setData] = useState<Date>(new Date());
+
      const componentMap: Record<string, ReactElement> = {
           Thunderstorm: <IoThunderstormOutline className="icon-style" />,
           Drizzle: <WiRainMix className="icon-style" />,
@@ -25,7 +26,7 @@ export default function Display(props: {
      };
 
      useEffect(() => {
-          const timer = liveClock(setData);
+          const timer: number = liveClock(setData);
           return () => clearInterval(timer);
      }, []);
 
